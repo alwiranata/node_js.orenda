@@ -1,10 +1,14 @@
-// const nama = 'aldo wiranata';
+// const nama ='aldo wiranata';
+// const cetakNama =(nama) => `hallo nama saya ${nama}`;
+// console.log(cetakNama(nama) )
+// console.log(window)
+// console.log('Hello Aldo')
+// const fs = require('fs') //core modul
+// const cetakNama = require('./coba'); //local module
+// const PI = require('./coba')
+// const moment = require ('moment'); //third party module
+const coba = require('./coba')
+// console.log(coba);
+// console.log(cetakNama);
+console.log(coba.cetakNama('Aldo Wiranata'),coba.PI, coba.mhs.cetakMhs() , new coba.Orang)
 
-// const cetakNama = (nama) => `Hi nama saya ${nama}`;
-
-// console.log(cetakNama(nama))
-// const fs = require('fs');//core module
-// const cetakNama = require('./coba'); //import local module
-// const moment = require('moment'); //third party module /  npm module / node_module
-const  coba = require('./coba');
-console.log(coba.cetakNama('aldo'), coba.PI, coba.mhs.cetakMhs() , new coba.Orang());

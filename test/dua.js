@@ -1,1 +1,1 @@
-console.log(cetakNama('alwiranata'))
+console.log(cetakNama('Aldo'))
