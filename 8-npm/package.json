@@ -1,0 +1,17 @@
+{
+  "name": "8-npm",
+  "version": "1.0.0",
+  "description": "belajar NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "dev": "ls",
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aldo",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.11.0"
+  }
+}

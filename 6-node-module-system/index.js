@@ -10,5 +10,4 @@
 const coba = require('./coba')
 // console.log(coba);
 // console.log(cetakNama);
-console.log(coba.cetakNama('Aldo Wiranata'),coba.PI, coba.mhs.cetakMhs() , new coba.Orang)
-
+console.log(coba.cetakNama('Aldo Wiranata'),coba.PI, coba.mhs.cetakMhs() , new coba.Orangclea)
