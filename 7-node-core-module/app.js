@@ -1,7 +1,75 @@
+
+//Mengambil argumen dari command line
+
+const yargs = require("yargs");
+const contacts = require("./contacts");
+
+yargs.command({
+    command: 'add',
+    describe: 'Menambahkan Kontak Baru',
+    builder: {
+        nama: {
+            describe: 'Nama Lengkap',
+            demandOption: true,
+            type: 'string',
+        },
+        email: {
+            describe: 'Email',
+            demandOption: false,
+            type: 'string',
+        },
+        noHP: {
+            describe: 'NoHp',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler(argv) {
+        contacts.simpanContact(argv.nama , argv.email , argv.noHP)
+    
+    },
+   
+})
+
+.demandCommand();
+
+//menampilkan daftar semua nama contact
+yargs.command({
+    command: 'list',
+    describe: 'Menambahkan Kontak Baru',
+   handler(){
+    contacts.listContact();
+   },
+})
+
+//menampilkan daftar semua nama contact
+yargs.command({
+    command: 'detail',
+    describe: 'Menampilkan detail sebuah contact berdasarkan nama',
+    builder : {
+        nama: {
+            describe: 'Nama Lengkap',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+   handler(argv){
+    contacts.detailContact(argv.nama);
+   },
+})
+
+
+
+yargs.parse();
+
+
+
+
+
+
+
 //core module
 //file system
-const { error } = require('node:console')
-const fs = require ('node:fs')
 
 //menuliskan string ke file (synchronus)
 // try{
@@ -35,27 +103,40 @@ const fs = require ('node:fs')
 
 // console.log('Menuggu file...')
 
-//readline 
-const readline = require('readline');
-const rl = readline.createInterface({
-    input : process.stdin,
-    output : process.stdout,
-})
 
 
-rl.question('Masukkan nama anda : ',(nama) =>{
-    rl.question('Masukkan no HP anda :',(noHP)=>{
-        const contact ={nama, noHP }
-        const file= fs.readFileSync('data/contacts.json', 'utf8' );
-        const contacts = JSON.parse(file);
 
-        contacts.push(contact);
-        fs.writeFileSync('data/contacts.json',JSON.stringify(contacts))
-        console.log('Thanks your input data')
-        rl.close();
-    })
-    
-    
-})
+// const pertanyaan2 =() =>{
+//     return new Promise((resolve,reject) =>{
+//         rl.question('Masukaan email anda : ' ,(email) => {
+//             resolve(email)
+//         })
+//     })
+// }
+
+// const contacts = require('./contacts')
+
+
+// const main = async () =>{
+//     const nama = await contacts.tulisPertanyaan('Masukkan nama anda :')
+//     const email =await contacts.tulisPertanyaan('Masukkan no Email anda :')
+//     const noHp =await contacts.tulisPertanyaan('Masukkan no Hp anda :')
+//    contacts.simpanContact(nama,email, noHp);
+// }
+
+// main();
+// rl.question('Masukkan nama anda : ',(nama) =>{
+//     rl.question('Masukkan no HP anda :',(noHP)=>{
+//    const contact{nama ,noHP}
+//         const fileBuffer= fs.readFileSync('data/contacts.json', 'utf8' );
+//         const contacts = JSON.parse(file);
+
+//         contacts.push(contact);
+//         fs.writeFileSync('data/contacts.json',JSON.stringify(contacts))
+//         console.log('Thanks your input data')
+//         rl.close();
+        
+//     })
+// })
 
 
