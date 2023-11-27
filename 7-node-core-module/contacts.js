@@ -78,7 +78,35 @@ const listContact = ()=>{
 };
 
 const detailContact = (nama) =>{
-    const contact =loadContact();
+    const contacts =loadContact();
+    const contact = contacts.find((contact) => 
+    contact.nama.toLowerCase() === nama.toLowerCase())
+
+    if(!contact){
+        console.log(chalk.red.inverse(`${nama} tidak ditemukan!`));
+        return false
+    }
+
+    console.log(chalk.cyan.inverse(contact.nama));
+    console.log(chalk.cyan.inverse(contact.noHP));
+    if(contact.email){
+        console.log(chalk.cyan.inverse(contact.email ));
+    }
 };
 
-module.exports = { simpanContact ,listContact ,detailContact };
+const deleteContact = (nama) =>{
+   const contacts = loadContact();
+    const newContacts = contacts.filter
+  ((contact) => contact.nama.toLowerCase() !== nama.toLowerCase())
+
+  if(contacts.length === newContacts.length){
+    console.log(chalk.red.inverse(`${nama} tidak ditemukan!`));
+    return false
+  }
+
+  fs.writeFileSync('data/contacts.json', JSON.stringify(newContacts));
+  console.log(chalk.red.inverse(`data contact ${nama} berhasil dihapus`));
+
+}
+
+module.exports = { simpanContact ,listContact ,detailContact ,deleteContact };
